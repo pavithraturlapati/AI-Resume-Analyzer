@@ -1,216 +1,154 @@
 AI Resume Analyzer Using Gemini And Python
 
-
 INTRODUCTION
-
 Welcome to the AI Resume Analyzer - your intelligent assistant for optimizing resumes and boosting job application success. This beginner-friendly project demonstrates how to leverage Large Language Models (LLMs) with prompt engineering techniques to automatically analyze and improve resume quality.
-
 Instead of manually reviewing and improving resumes, this system allows you to:
-
-- Get expert analysis of resume strengths and weaknesses
-- Identify skill gaps and areas for improvement
-- Receive ATS optimization suggestions for better screening results
-- Generate professional improvements with actionable feedback
-- Process multiple formats (PDF and text files)
-- Boost job readiness with data-driven recommendations
-
+Get expert analysis of resume strengths and weaknesses
+Identify skill gaps and areas for improvement
+Receive ATS optimization suggestions for better screening results
+Generate professional improvements with actionable feedback
+Process multiple formats (PDF and text files)
+Boost job readiness with data-driven recommendations
 Perfect for beginners learning AI integration, Prompt Engineering, and building practical career development tools!
 
-
 WHAT THIS PROJECT DOES
-
-- Reads resume content from PDF or text files automatically
-- Extracts text from PDF documents using pypdf library
-- Generates comprehensive resume analysis with structured feedback
-- Demonstrates how role-based prompting leads to expert-level analysis
-- Handles errors gracefully with comprehensive exception handling
-- Provides a clean CLI interface for easy interaction
-- Uses Google's Gemini LLM for professional resume evaluation
-
+Reads resume content from PDF or text files automatically
+Extracts text from PDF documents using pypdf library
+Generates comprehensive resume analysis with structured feedback
+Demonstrates how role-based prompting leads to expert-level analysis
+Handles errors gracefully with comprehensive exception handling
+Provides a clean CLI interface for easy interaction
+Uses Google's Gemini LLM for professional resume evaluation
 The tool generates three powerful analysis sections:
-
 Key Strengths Analysis
-- Identifies standout achievements and metrics
-- Highlights relevant technical skills
-- Recognizes quantifiable impact statements
-- Perfect for understanding your competitive advantages
-
+Identifies standout achievements and metrics
+Highlights relevant technical skills
+Recognizes quantifiable impact statements
+Perfect for understanding your competitive advantages
 Improvement Areas
-- Points out weak language and passive voice
-- Suggests stronger action verbs
-- Identifies missing context in experiences
-- Recommends technical depth enhancements
-
+Points out weak language and passive voice
+Suggests stronger action verbs
+Identifies missing context in experiences
+Recommends technical depth enhancements
 ATS Compatibility Analysis
-- Evaluates keyword density for applicant tracking systems
-- Checks formatting compatibility
-- Suggests standard header usage
-- Provides customization strategies for specific jobs
-
+Evaluates keyword density for applicant tracking systems
+Checks formatting compatibility
+Suggests standard header usage
+Provides customization strategies for specific jobs
 Professional Resume Rewrite
-- Generates improved version of your resume
-- Implements best practices automatically
-- Enhances action-oriented language
-- Strengthens technical descriptions
-
+Generates improved version of your resume
+Implements best practices automatically
+Enhances action-oriented language
+Strengthens technical descriptions
 
 ARCHITECTURE AND SEQUENCE FLOW
-
 User -> CLI Interface -> File Reader -> Text Extraction -> Prompt Builder -> Gemini LLM API -> Response Processor -> Formatted Output
-
 Detailed Flow:
-1. Application starts - User launches the CLI application
-2. File type detection - System identifies PDF or text format
-3. Content extraction - pypdf extracts text from PDF or reads text file
-4. Prompt construction - Structured prompt with numbered requirements
-5. API client initialization - Gemini client is created with API key
-6. System instruction setup - Model is positioned as expert resume assistant
-7. Content generation - Prompt is sent to Gemini API with temperature=1.0
-8. Response processing - API response is formatted with sections
-9. Error handling - Catches file, parsing, and API errors gracefully
-10. Output display - Complete analysis with improved resume printed to console
-
+Application starts - User launches the CLI application
+File type detection - System identifies PDF or text format
+Content extraction - pypdf extracts text from PDF or reads text file
+Prompt construction - Structured prompt with numbered requirements
+API client initialization - Gemini client is created with API key
+System instruction setup - Model is positioned as expert resume assistant
+Content generation - Prompt is sent to Gemini API with temperature=1.0
+Response processing - API response is formatted with sections
+Error handling - Catches file, parsing, and API errors gracefully
+Output display - Complete analysis with improved resume printed to console
 
 PROMPT ENGINEERING USED
-
 Role-Based System Instructions
-
 system_instructions = "You are an expert resume writing assistant. Please analyze the following resume:"
-
 This positions the AI as a domain expert, ensures professional tone and vocabulary, improves analysis depth and quality, and provides consistent perspective across analyses.
-
 Structured Prompting with Numbered Requirements
-
 user_prompt = f"""
-    Improve the following resume professionally.
-    Also provide:
-    1. Key strengths and skills highlighted in the resume.
-    2. Areas for improvement in terms of content, structure, and formatting.
-    3. ATS compatibility analysis and suggestions.
-
+Improve the following resume professionally.
+Also provide:
+1. Key strengths and skills highlighted in the resume.
+2. Areas for improvement in terms of content, structure, and formatting.
+3. ATS compatibility analysis and suggestions.
     Resume content:
     {content}
     """
 
 Context Injection Pattern
 Dynamically embeds resume content into the prompt template for reusability and maintainability.
-
 Temperature Control
 Uses higher temperature (1.0) for more creative improvements and diverse phrasings.
 
-
-LEARNING OUTCOMES
-
-After completing this project, you will understand:
-- How to integrate Gemini LLM APIs using Python
-- How role-based system instructions influence AI behavior
-- How to implement structured prompt design for organized outputs
-- How to handle PDF parsing with pypdf library
-- How to process multi-format file input (PDF and text)
-- How to implement robust error handling for file operations
-- How to structure modular, maintainable code
-- How to manage API keys securely with environment variables
-- Context injection techniques for dynamic prompts
-
-Sample Output
-
+SAMPLE OUTPUT
+```
 --- Welcome to your AI Resume Analyzer! ---
 Analyzing resume from file: data/My_Resume.pdf
 Creating Gen AI client...
 Analyzing resume... Please wait.
 
 ------------------------------------------------------------
-This analysis provides a professionally rewritten version of the resume, followed by an evaluation of strengths, areas for improvement, and ATS compatibility.
+This analysis provides a professionally rewritten version of the resume,
+followed by an evaluation of strengths, areas for improvement, and ATS compatibility.
 
----
+REWRITTEN RESUME
 
-# REWRITTEN RESUME
-
-**Christa Frank**
-**Senior Machine Learning Engineer**
+Christa Frank
+Senior Machine Learning Engineer
 Chicago, Illinois, US | 202-555-0120
-info@resumekraft.com | linkedin.com/resumekraft | ResumeKraft.com
+info@resumekraft.com | linkedin.com/resumekraft
 
-### **PROFESSIONAL SUMMARY**
-Innovative Senior Machine Learning Engineer with over 4 years of experience specializing in NLP, Conversational AI, and end-to-end ML lifecycles. Proven track record in designing and deploying scalable AI solutions using RASA, TensorFlow, and Azure ML Studio. Expert in bridging the gap between technical execution and business strategy to solve complex real-world problems.
+PROFESSIONAL SUMMARY
+Innovative Senior Machine Learning Engineer with over 4 years of experience
+specializing in NLP, Conversational AI, and end-to-end ML lifecycles.
 
-### **TECHNICAL SKILLS**
-*   **Languages & Frameworks:** Python (Expert), Django, Flask, RASA, NLTK, TensorFlow, Keras.
-*   **ML/Data Science:** Deep Learning (ANN), Natural Language Processing (NLP), Sentiment Analysis, Data Wrangling, Data Mining, Sales Forecasting, Exploratory Data Analysis (EDA).
-*   **Cloud & Tools:** Azure Machine Learning Studio, AWS (ECS), Docker, Git, Bitbucket, Jupyter Notebook, Google Collab.
-*   **Databases:** MySQL, MongoDB, Microsoft SQL Server.
+TECHNICAL SKILLS
+- Languages & Frameworks: Python, Django, Flask, RASA, NLTK, TensorFlow, Keras
+- ML/Data Science: Deep Learning, NLP, Sentiment Analysis, Data Wrangling
+- Cloud & Tools: Azure ML Studio, AWS (ECS), Docker, Git, Jupyter Notebook
+- Databases: MySQL, MongoDB, Microsoft SQL Server
 
-### **PROFESSIONAL EXPERIENCE**
+ANALYSIS & FEEDBACK
 
-**Graymatrix Solutions Pvt. Ltd.** | *System Analyst* | Sep 2021 – Present
-*   **Lead AI Architect:** Consult on and manage the development of healthcare, mental health, and financial assistant chatbots, optimizing conversation flows for improved user retention.
-*   **NLP Research:** Conducted advanced research on intent detection and Named Entity Recognition (NER) to increase chatbot response accuracy by refining linguistic models.
-*   **Production Deployment:** Developed and deployed AI solutions for sales forecasting, sentiment analysis, and language detection using Azure Machine Learning Studio.
-*   **QA & Training:** Led User Acceptance Testing (UAT) and conducted on-site client training to ensure seamless integration and adoption of AI tools.
+1. Key Strengths and Skills
+- Specialization in Conversational AI (Chatbots, RASA, NLP)
+- Full-Stack ML Capability from data wrangling to deployment
+- Strong Toolset with TensorFlow, Keras, and NLTK
+- Leadership in managing development and leading teams
 
-**Passive Referral** | *Machine Learning Engineer* | Mar 2020 – Aug 2021
-*   **End-to-End Bot Development:** Engineered real-time conversational bots from scratch, handling the full lifecycle from requirement gathering to testing and AWS deployment.
-*   **Model Optimization:** Developed and trained machine learning models for context recognition using TensorFlow, improving the relevance of voice and text-based interactions.
-*   **Data Engineering:** Managed data labeling pipelines and iterative feature engineering to improve model performance over time.
+2. Areas for Improvement
+- Add quantifiable achievements (e.g. "Improved accuracy by 15%")
+- Fix typos and encoding errors from the original
+- Remove redundancy in project section
+- Rewrite summary as a value proposition
 
-**Henry Harvin Education** | *Machine Learning Intern* | Jun 2019 – Nov 2019
-*   **Team Leadership:** Mentored a team of interns through the full ML development cycle, from data ingestion to model deployment.
-*   **Text Classification:** Built domain-specific text classifiers and developed a news content-based clustering system using Keras and Decision Trees.
+3. ATS Compatibility Analysis
+- Good: Rich in high-value keywords (NLP, RASA, TensorFlow, Azure, Docker)
+- Use a clean single-column layout for better ATS parsing
+- Save and upload as a searchable PDF
+- Use standard web-safe fonts like Arial or Calibri
 
-### **KEY PROJECTS**
-
-**Conversational HR Bot (RASA, MongoDB, Docker)**
-*   Developed an automated pre-screening bot to shortlist candidates, integrating sentiment analysis to evaluate candidate engagement.
-*   Engineered a credential validation module and centralized data tracking using MySQL and MongoDB.
-
-**Resume Parser (NLTK, Tesseract OCR, AWS)**
-*   Designed an OCR-based parser to extract keywords from candidate resumes, significantly reducing manual screening time for HR departments.
-*   Architecture included deployment via Docker on AWS ECS.
-
-### **CERTIFICATIONS**
-*   **TensorFlow for AI, Machine Learning, and Deep Learning** – DeepLearning.AI (Coursera)
-*   **A Crash Course in Data Science** – Johns Hopkins University (Coursera)
-*   **AI For Everyone** – DeepLearning.AI (Coursera)
-
----
-
-# ANALYSIS & FEEDBACK
-
-### 1. Key Strengths and Skills
-*   **Specialization in Conversational AI:** The resume highlights a clear niche (Chatbots, RASA, NLP), which is highly valuable in the current market.
-*   **Full-Stack ML Capability:** Demonstrates experience from data wrangling and model training to deployment (Docker, AWS, Azure).
-*   **Strong Toolset:** Proficiency in industry-standard libraries like TensorFlow, Keras, and NLTK is clearly visible.
-*   **Leadership:** Mentions of "Managing development processes" and "Leading teams" suggest seniority beyond just coding.
-
-### 2. Areas for Improvement
-*   **Quantifiable Achievements:** The original resume lacks metrics. *Suggestion:* Instead of "Improving existing flows," use "Improved conversation accuracy by 15% through intent refinement."
-*   **Typos and Formatting:** The original text had several "encoding" errors (e.g., "de ned" instead of "defined," "Arti cial" instead of "Artificial"). These must be fixed to look professional.
-*   **Redundancy:** The project section repeated the title "Machine Learning Engineer" four times. This has been streamlined in the rewrite.
-*   **Summary Statement:** The original summary was passive ("seeks opportunities"). It should be a "Value Proposition" stating what you bring to the company.
-
-### 3. ATS (Applicant Tracking System) Analysis
-*   **Keyword Optimization:** The resume is rich in high-value keywords (NLP, RASA, TensorFlow, Azure, Docker). This will help it rank well for ML roles.
-*   **Formatting:** 
-    *   **The Good:** The structure is logical and uses standard headings.
-    *   **The Bad:** Avoid multi-column layouts or complex tables, as some older ATS scanners read left-to-right across columns, scrambling the text.
-    *   **Suggestion:** Use a clean, single-column layout (as provided in the rewrite). Ensure the font is a standard web-safe font like Arial, Calibri, or Roboto.
-*   **File Type:** Always save and upload as a PDF unless a Word Doc is specifically requested, but ensure the PDF is "searchable" (not a flat image).
-
-### 4. Grammar and Action Verbs
-*   **Action Verbs:** I replaced passive phrases like "I was responsible for" with strong action verbs like **Engineered**, **Architected**, **Optimized**, and **Mentored**. This makes the candidate appear more proactive and authoritative.
+4. Grammar and Action Verbs
+- Replaced passive phrases with strong action verbs:
+  Engineered, Architected, Optimized, Mentored
 ------------------------------------------------------------
+```
 
-
+LEARNING OUTCOMES
+After completing this project, you will understand:
+How to integrate Gemini LLM APIs using Python
+How role-based system instructions influence AI behavior
+How to implement structured prompt design for organized outputs
+How to handle PDF parsing with pypdf library
+How to process multi-format file input (PDF and text)
+How to implement robust error handling for file operations
+How to structure modular, maintainable code
+How to manage API keys securely with environment variables
+Context injection techniques for dynamic prompts
 
 FUTURE ENHANCEMENTS
-
-- Web Interface with Streamlit
-- Advanced Analytics
-- Job Matching Features
-- Multi-Format Support
-- Batch Processing
-- Output Management
-- Multi-Language Support
-- Career Development Tools
-- Enterprise Features
-- Multiple Resume Format Generation
+Web Interface with Streamlit
+Advanced Analytics
+Job Matching Features
+Multi-Format Support
+Batch Processing
+Output Management
+Multi-Language Support
+Career Development Tools
+Enterprise Features
+Multiple Resume Format Generation
