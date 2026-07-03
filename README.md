@@ -17,7 +17,6 @@ Instead of manually reviewing and improving resumes, this system allows you to:
 
 Perfect for beginners learning AI integration, Prompt Engineering, and building practical career development tools!
 
----
 
 ## 🔍 What This Project Does
 
@@ -51,7 +50,6 @@ The tool generates four powerful analysis sections:
 - Implements best practices automatically
 - Enhances action-oriented language
 
----
 
 ## 🏗️ Architecture & Sequence Flow
 
@@ -86,7 +84,6 @@ Formatted Output
 9. **Error handling** — Catches file, parsing, and API errors gracefully
 10. **Output display** — Complete analysis with improved resume printed to console
 
----
 
 ## 🧪 Prompt Engineering Used
 
@@ -119,7 +116,6 @@ Resume content:
 
 **Temperature Control** — Uses higher temperature (`1.0`) for more creative improvements and diverse phrasings.
 
----
 
 ## 📄 Sample Output
 
