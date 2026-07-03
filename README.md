@@ -1,8 +1,6 @@
 # AI Resume Analyzer 
 
-Welcome to the **AI Resume Analyzer** — your intelligent assistant for optimizing resumes and boosting job application success.
-
-This beginner-friendly project demonstrates how to leverage Large Language Models (LLMs) with prompt engineering techniques to automatically analyze and improve resume quality.
+This Project demonstrates how to leverage Large Language Models (LLMs) with prompt engineering techniques to automatically analyze and improve resume quality.
 
 Instead of manually reviewing and improving resumes, this system allows you to:
 
@@ -12,8 +10,6 @@ Instead of manually reviewing and improving resumes, this system allows you to:
 - Generate professional improvements with actionable feedback
 - Process multiple formats (PDF and text files)
 - Boost job readiness with data-driven recommendations
-
-Perfect for beginners learning AI integration, Prompt Engineering, and building practical career development tools!
 
 
 ## 🔍 What This Project Does
