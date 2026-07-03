@@ -1,100 +1,45 @@
-# AI Resume Analyzer Using Gemini And Python
+# 🧠 AI Resume Analyzer Using Gemini & Python
 
-## INTRODUCTION
+An intelligent CLI tool that automatically analyzes and rewrites resumes using **Google Gemini**, structured prompt engineering, and PDF parsing. Built for beginners learning AI integration and practical LLM applications.
 
-Welcome to the **AI Resume Analyzer** — your intelligent assistant for optimizing resumes and boosting job application success.
+## ✨ What It Does
 
-This beginner-friendly project demonstrates how to leverage Large Language Models (LLMs) with prompt engineering techniques to automatically analyze and improve resume quality.
+- Reads resume content from **PDF or plain text** files automatically
+- Generates a **professional rewrite** with stronger action verbs and structure
+- Identifies **key strengths**, weak language, and missing context
+- Performs an **ATS compatibility audit** for applicant tracking systems
+- Demonstrates **role-based prompting** and structured prompt design
+- Handles errors gracefully across file, parsing, and API failures
 
-Instead of manually reviewing and improving resumes, this system allows you to:
+## 🏗️ Architecture
 
-- Get expert analysis of resume strengths and weaknesses
-- Identify skill gaps and areas for improvement
-- Receive ATS optimization suggestions for better screening results
-- Generate professional improvements with actionable feedback
-- Process multiple formats (PDF and text files)
-- Boost job readiness with data-driven recommendations
-
-Perfect for beginners learning AI integration, Prompt Engineering, and building practical career development tools!
-
----
-
-# WHAT THIS PROJECT DOES
-
-- Reads resume content from PDF or text files automatically
-- Extracts text from PDF documents using `pypdf` library
-- Generates comprehensive resume analysis with structured feedback
-- Demonstrates how role-based prompting leads to expert-level analysis
-- Handles errors gracefully with comprehensive exception handling
-- Provides a clean CLI interface for easy interaction
-- Uses Google's Gemini LLM for professional resume evaluation
-
-The tool generates three powerful analysis sections:
-
-## Key Strengths Analysis
-
-- Identifies standout achievements and metrics
-- Highlights relevant technical skills
-- Recognizes quantifiable impact statements
-
-## Improvement Areas
-
-- Points out weak language and passive voice
-- Suggests stronger action verbs
-- Identifies missing context in experiences
-
-## ATS Compatibility Analysis
-
-- Evaluates keyword density for applicant tracking systems
-- Checks formatting compatibility
-- Suggests standard header usage
-
-## Professional Resume Rewrite
-
-- Generates improved version of your resume
-- Implements best practices automatically
-- Enhances action-oriented language
-
----
-
-# ARCHITECTURE AND SEQUENCE FLOW
-
-```text
-User
-   ↓
-CLI Interface
-   ↓
-File Reader
-   ↓
-Text Extraction
-   ↓
-Prompt Builder
-   ↓
-Gemini LLM API
-   ↓
-Response Processor
-   ↓
-Formatted Output
+```mermaid
+graph TD
+    User([User Input: Resume File]) --> CLI[CLI Interface]
+    CLI --> FileReader[File Reader]
+    FileReader -->|PDF| PyPDF[pypdf Extractor]
+    FileReader -->|TXT| TextReader[Text Reader]
+    PyPDF --> PromptBuilder[Prompt Builder]
+    TextReader --> PromptBuilder
+    PromptBuilder --> Gemini[Gemini LLM API]
+    Gemini --> Processor[Response Processor]
+    Processor --> Output[Formatted CLI Output]
 ```
 
-## Detailed Flow
+## 🔍 Analysis Sections
 
-1. Application starts — User launches the CLI application
-2. File type detection — System identifies PDF or text format
-3. Content extraction — `pypdf` extracts text from PDF or reads text file
-4. Prompt construction — Structured prompt with numbered requirements
-5. API client initialization — Gemini client is created with API key
-6. System instruction setup — Model is positioned as expert resume assistant
-7. Content generation — Prompt is sent to Gemini API with `temperature=1.0`
-8. Response processing — API response is formatted with sections
-9. Error handling — Catches file, parsing, and API errors gracefully
-10. Output display — Complete analysis with improved resume printed to console
+**1. Key Strengths** — Standout achievements, technical skills, and quantifiable impact statements.
 
----
+**2. Improvement Areas** — Weak language, passive voice, and missing context flagged with suggestions.
 
-# PROMPT ENGINEERING USED
+**3. ATS Compatibility** — Keyword density, formatting checks, and standard header recommendations.
 
-## Role-Based System Instructions
+**4. Professional Rewrite** — A fully improved version of the resume with best practices applied automatically.
+
+
+## 🧪 Prompt Engineering Techniques
+
+**Role-based system instructions** — Positions the model as an expert resume assistant before any content is sent.
 
 ```python
 system_instructions = (
@@ -103,7 +48,7 @@ system_instructions = (
 )
 ```
 
-## Structured Prompting with Numbered Requirements
+**Structured prompting with numbered requirements** — Produces organized, consistent output sections.
 
 ```python
 user_prompt = f"""
@@ -119,19 +64,36 @@ Resume content:
 """
 ```
 
-## Context Injection Pattern
+**Context injection** — Resume content is dynamically embedded into a reusable prompt template.
 
-Dynamically embeds resume content into the prompt template for reusability and maintainability.
+**Temperature control** — Uses `temperature=1.0` for creative, diverse phrasing in rewrites.
 
-## Temperature Control
 
-Uses higher temperature (`1.0`) for more creative improvements and diverse phrasings.
+## 💻 Tech Stack
 
----
+| Layer | Tool |
+|---|---|
+| LLM | Google Gemini API |
+| PDF Parsing | `pypdf` |
+| CLI Interface | Python `argparse` |
+| Config | `python-dotenv` |
+| Error Handling | Native Python exceptions |
 
-# SAMPLE OUTPUT
 
-```text
+## 📂 Project Structure
+
+```
+resume_analyzer/
+├── .env                  # API credentials (not committed)
+├── requirements.txt
+├── data/
+│   └── My_Resume.pdf     # Place your resume here
+└── analyzer.py           # Main script (file reader, prompt builder, output)
+```
+
+## 📄 Sample Output
+
+```
 --- Welcome to your AI Resume Analyzer! ---
 
 Analyzing resume from file: data/My_Resume.pdf
@@ -140,81 +102,29 @@ Analyzing resume... Please wait.
 
 ------------------------------------------------------------
 
-This analysis provides a professionally rewritten version
-of the resume, followed by an evaluation of strengths,
-areas for improvement, and ATS compatibility.
-
 REWRITTEN RESUME
 
-Christa Frank
-Senior Machine Learning Engineer
-Chicago, Illinois, US | 202-555-0120
+Christa Frank · Senior Machine Learning Engineer
+Chicago, IL | 202-555-0120
 
 PROFESSIONAL SUMMARY
-
-Innovative Senior Machine Learning Engineer with over
-4 years of experience specializing in NLP,
-Conversational AI, and end-to-end ML lifecycles.
-
-TECHNICAL SKILLS
-
-- Languages: Python, Django, Flask, RASA, NLTK,
-  TensorFlow, Keras
-- ML/Data Science: Deep Learning, NLP,
-  Sentiment Analysis, Data Wrangling
-- Cloud & Tools: Azure ML Studio, AWS (ECS),
-  Docker, Git, Jupyter Notebook
-- Databases: MySQL, MongoDB, Microsoft SQL Server
+Innovative ML Engineer with 4+ years in NLP and Conversational AI...
 
 ANALYSIS & FEEDBACK
 
-1. Key Strengths and Skills
-- Specialization in Conversational AI
-- Full-Stack ML Capability
-- Strong Toolset with TensorFlow and Keras
+1. Key Strengths
+   - Specialization in Conversational AI
+   - Full-Stack ML Capability
+   - Strong Toolset with TensorFlow and Keras
 
 2. Areas for Improvement
-- Add quantifiable achievements
-- Fix typos and encoding errors
-- Rewrite summary as a value proposition
+   - Add quantifiable achievements
+   - Rewrite summary as a value proposition
 
-3. ATS Compatibility Analysis
-- Rich in high-value keywords
-- Use clean single-column layout
-- Save and upload as searchable PDF
-
-4. Grammar and Action Verbs
-- Replaced passive phrases with strong action verbs
+3. ATS Compatibility
+   - Rich in high-value keywords
+   - Use a clean single-column layout
+   - Save and submit as a searchable PDF
 
 ------------------------------------------------------------
 ```
-
----
-
-# LEARNING OUTCOMES
-
-After completing this project, you will understand:
-
-- How to integrate Gemini LLM APIs using Python
-- How role-based system instructions influence AI behavior
-- How to implement structured prompt design for organized outputs
-- How to handle PDF parsing with `pypdf`
-- How to process multi-format file input
-- How to implement robust error handling
-- How to structure modular and maintainable code
-- How to manage API keys securely using environment variables
-
----
-
-# FUTURE ENHANCEMENTS
-
-- Web Interface with Streamlit
-- Advanced Analytics
-- Job Matching Features
-- Multi-Format Support
-- Batch Processing
-- Output Management
-- Multi-Language Support
-- Career Development Tools
-- Enterprise Features
-- Multiple Resume Format Generation
