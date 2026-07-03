@@ -1,4 +1,4 @@
-# 🧠 AI Resume Analyzer Using Gemini & Python
+# AI Resume Analyzer 
 
 ## Introduction
 
